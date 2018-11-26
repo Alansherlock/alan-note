@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绘制五角星⭐️</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        canvas.width = 800;
+        canvas.height = 800;
+        let ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        for(let i = 0;i<5;i++) {
+            ctx.lineTo(Math.cos((18 + i* 72)/180 * Math.PI) * 300 + 400,
+            -Math.sin((18 + i* 72)/180 * Math.PI) * 300 + 400);
+            ctx.lineTo(Math.cos((54 + i* 72)/180 * Math.PI) * 150 + 400,
+            -Math.sin((54 + i* 72)/180 * Math.PI) * 150 + 400);
+        }
+        ctx.closePath();
+        ctx.lineWith = 10;
+        ctx.fillStyle = '#daa520';
+        ctx.lineStyle = '#daa520';
+        ctx.fill();
+        ctx.stroke();
+
+    </script>
+</body>
+</html>
