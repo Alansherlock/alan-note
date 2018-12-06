@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas-two</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa;display:block;margin:0 auto;">
+        当前浏览器不支持canvas，请更换浏览器查看页面
+    </canvas>
+    <script>
+        window.onload = ()=> {
+            let canvas = document.getElementById('canvas');
+            canvas.width = 1024;
+            canvas.height = 768;
+            let ctx = canvas.getContext('2d');
+            /* 
+            1. 画线条 moveTo,lineTo,stroke 
+            2. moveTo(100,100) ==> lineTo(700,700) 状态设置
+            **/
+            ctx.beginPath();
+            ctx.moveTo(100,100);
+            ctx.lineTo(700,700);
+            ctx.lineTo(100,700);
+            ctx.lineTo(100,100);
+            ctx.closePath();
+            /*
+            3. 给多边形着色 fillStyle fill
+            **/
+            ctx.fillStyle = 'rgba(0,0,0,.3)'
+            ctx.fill();
+
+            /*
+            4. 绘制外边框
+            **/
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+
+            /* 5. 画一条其他颜色的直线，为什么说是其他颜色，因为状态设置的这种原因，需要在加上两个属性来做这个工作； 
+            **/
+            ctx.beginPath();
+            ctx.moveTo(200,100);
+            ctx.lineTo(700,600);
+            ctx.closePath();
+            // 需要补被覆盖,利用好beginPath(),closePath()
+            ctx.strokeStyle = 'blue';
+            ctx.stroke();
+            
+        }
+    </script>
+</body>
+</html>
