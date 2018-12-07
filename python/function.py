@@ -50,3 +50,5 @@ def move(x, y, step, angle=0):
     nx = x + step * math.cos(angle)
     ny = y - step * math.sin(angle)
     return nx, ny
+
+print(move(20,100,30))
