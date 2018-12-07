@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas-one</title>
+</head>
+<body>
+    <!-- 默认情况下的宽是300，高是150 -->
+    <!-- 不建议使用css的方式来定义画布的大小，符合W3C标准而因为canvas还有关于分辨率的大小，
+    因此，一般都是使用canvas标签带有的width和height属性，没有加px单位，W3C标准 -->
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #aaa;display:block;margin:0  auto;">
+        <!-- 假设当前用户浏览器不支持时，在标签中间写上描述，用户则可看到 -->
+        当前浏览器不支持canvas，请更换浏览器查看页面
+    </canvas>
+    <script>
+        // 初始化操作
+
+        // 1. 获取canvas画布id
+        let canvas = document.getElementById('canvas');
+
+        // 2. 调用2d的canvas方法
+        let ctx = canvas.getContext('2d');
+
+        // 3. 另外一种设置canvas画布大小的方式
+
+        // canvas.width = 1024;
+        // canvas.height = 768;
+
+        // 4. 利用getContext('2d')这个方法来判断当前浏览器是否支持canvas,如下方式：
+        if(ctx) {
+            // 使用canvas绘制
+        }else {
+            // alert('当前浏览器不支持canvas，请更换浏览器后再试');
+        }
+        
+    </script>
+</body>
+</html>

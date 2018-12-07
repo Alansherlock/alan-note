@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas-two</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa;display:block;margin:0 auto;">
+        当前浏览器不支持canvas，请更换浏览器查看页面
+    </canvas>
+    <script>
+        window.onload = ()=> {
+            let canvas = document.getElementById('canvas');
+            canvas.width = 1024;
+            canvas.height = 768;
+            let ctx = canvas.getContext('2d');
+            /* 
+            1. 画线条 moveTo,lineTo,stroke 
+            2. moveTo(100,100) ==> lineTo(700,700) 状态设置
+            3. stroke则是绘制 
+            **/
+            ctx.moveTo(100,100);
+            ctx.lineTo(700,700);
+            // 设置线条的宽度
+            ctx.lineWidth = 5;
+            //设置线条的样式，主要是指颜色
+            ctx.strokeStyle = 'yellow';
+            // 绘制笔画
+            ctx.stroke();
+            // 4. 绘制完成后我们来看坐标系，以左上角为原点，X轴向右为正方向，Y轴向下为正方向；
+        }
+    </script>
+</body>
+</html>
