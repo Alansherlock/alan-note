@@ -52,3 +52,20 @@ def move(x, y, step, angle=0):
     return nx, ny
 
 print(move(20,100,30))
+
+
+def add_end(L=[]):
+    L.append('END')
+    return L
+
+add_end();
+# 由于 [] 为可变对象，会拿取到上个对象存取的'END',因此打印了两个
+print(add_end())
+
+
+# 这样就不会，哈哈哈
+def add_end(L=None):
+    if L is None:
+        L = []
+    L.append('END')
+    return L
