@@ -1,6 +1,4 @@
 import scrapy
-
-
 class lol(scrapy.Spider):
     name = "lol"
     start_urls = ["https://www.huya.com/g/lol"]
