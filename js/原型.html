@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// let obj1 = {};
+// let obj2 = new Object();
+// console.log(Object.getPrototypeOf( obj1 ) === Object.prototype);//true
+// console.log(Object.getPrototypeOf( obj2 ) === Object.prototype);//true
+// var a = new Object();
+// console.log ( a.__proto__=== Object.prototype ); // 输出:true
+// window.a = 2;
+// 对象调用
+// var obj = { 
+//     a: 1,
+//     // 箭头函数这个指向了window（全局）
+//     getA: ()=>{
+//         console.log ( this === obj ); // 输出:true 
+//         console.log ( this ); // 输出: window
+//     },
+//     getB:function() {
+//         console.log ( this === obj ); // 输出:true 
+//         console.log ( this.a ); // 输出: 1
+//     }
+// };
+//  obj.getA();
+//  obj.getB();
+// 函数调用
+window.name = 'globalName';
+var myObject = { 
+    name: 'sven',
+getName: function(){ 
+    return this.name;
+}};
+var getName = myObject.getName; 
+console.log( getName() ); // globalName
+</script>
+</body>
+</html>
