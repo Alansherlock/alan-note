@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用闭包来实现一个完整的面向对象系统</title>
+</head>
+<body>
+<script>
+// 闭包写法
+var extent = function() {
+    var value = 0;
+    return {
+        call:function() {
+            value++;
+            console.log( value );
+        }
+    }
+} 
+var extents = extent();
+extents.call();
+extents.call();
+extents.call();
+//面向对象写法
+var extent = { 
+    value: 0,
+    call: function(){ 
+        this.value++;
+        console.log( this,this.value ); 
+    }
+};
+// 为啥value值没变，是因为改变的一直是这个对象，这个需要利用堆栈的知识来解释
+extent.call();
+extent.call();
+extent.call();
+// 写法三
+var Extent = function(){ 
+    // 声明函数，this指向当前函数
+    this.value = 0;
+};
+// call改变this指向,call()允许为不同的对象分配和调用属于一个对象的函数/方法。
+/*
+*@function call()
+提供新的 this 值给当前调用的函数/方法。你可以使用call来实现继承：
+写一个方法，然后让另外一个新的对象来继承它（而不是在新对象中再写一次这个方法）。
+**/
+Extent.prototype.call = function(){ 
+    this.value++;
+    console.log( this.value ); 
+};
+// new构造出一个对象,如果不给原型加方法call()的话则只能是通过构造函数创建出一个{value:0}的对象
+var extent = new Extent();
+console.log(extent);
+// 调用对象的属性
+extent.call(); 
+extent.call(); 
+extent.call();
+</script>
+</body>
+</html>
