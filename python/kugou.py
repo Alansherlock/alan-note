@@ -11,7 +11,10 @@ def get_song(x):
     js = json.loads(res[res.index('(') + 1:-2])
     data = js['data']['lists']
     for i in range(10):
-        print(str(i + 1) + ">>>" + str(data[i]['FileName']).replace('<em>', '').replace('</em>', ''))
+        # window
+        # print(str(i + 1) + ">>>" + str(data[i]['FileName']).replace('<em>', '').replace('</em>', ''))
+        # mac
+        print(str(i + 1) + "" + str(data[i]['FileName']).replace('<em>', '').replace('</em>', ''))
     number = int(input("\n请输入要下载的歌曲序号（输入-1退出程序）: "))
     if number == -1:
         exit()
