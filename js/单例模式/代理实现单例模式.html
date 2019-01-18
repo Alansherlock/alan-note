@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理实现单例模式</title>
+</head>
+
+<body>
+    <script>
+        CreateDiv = function (html) {
+            this.html = html;
+            this.init();
+        }
+        // 给当前对象原型加上初始化方法,处理业务上的东西
+        CreateDiv.prototype.init = function () {
+            let div = document.createElement('div');
+            div.innerHTML = this.html;
+            document.body.appendChild(div);
+        };
+        // 只处理逻辑部分
+        let ProxySingletonCreateDiv = (function () {
+            let instance;
+            return function (html) {
+                if (!instance) {
+                    instance = new CreateDiv(html);
+                }
+                return instance;
+            }
+        })();
+        let a = new ProxySingletonCreateDiv('a');
+        let b = new ProxySingletonCreateDiv('b');
+        console.log(typeof ProxySingletonCreateDiv,a,b);
+    </script>
+</body>
+
+</html>

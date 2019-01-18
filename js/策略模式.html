@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 一般的代码
+    // if('a' == item) {
+    //     return 1;
+    // }
+    // if('b' == item) {
+    //     return 2;
+    // }
+    // if('c' == item) {
+    //     return 3;
+    // }
+    // 使用策略模式的代码,1,2,3还可以使用函数，然后传入参数来计算出想要的值
+    let obj = {
+        'a' : 1,
+        'b' : 2,
+        'c' : 3
+    }
+    const fun = (obj,key) =>{
+        return obj[key];
+    }
+    console.log(fun(obj,'a'));
+</script>
+</body>
+</html>
