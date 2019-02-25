@@ -10,7 +10,7 @@ def get_song(x):
     res = requests.get(url).text
     js = json.loads(res[res.index('(') + 1:-2])
     data = js['data']['lists']
-    for i in range(10):
+    for i in range(4):
         # window
         # print(str(i + 1) + ">>>" + str(data[i]['FileName']).replace('<em>', '').replace('</em>', ''))
         # mac
