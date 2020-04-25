@@ -44,6 +44,42 @@ function mapObj(list) {
     });
 }
 console.log(mapObj(oldlist));
+async function getJsonObject(key, defaultObject){
+        console.log(11)
+        let result=null;
+        try{
+            result=await window.getString(key,null);
+            result=await JSON.parse(result);
+        }catch (err){
+            console.log(err,'err')
+            if(defaultObject){
+                return Promise.resolve(defaultObject);
+            }else{
+                return Promise.reject(err);
+            }
+        }
+        console.warn(result);
+        debugger;
+        return result;
+}
+async function getString(key, defaultValue) {
+        console.log('get')
+        let result = null;
+        let noDataError = {"msg": "No value found !"};
+        if (key != null) {
+            result = await AsyncStorage.getItem(key);
+            // console.log('get string result',result,defaultValue);
+            return result ? result : defaultValue!=null ? defaultValue : Promise.reject(noDataError);
+        } else {
+            if (defaultValue) {
+                return Promise.resolve(defaultValue);
+            } else {
+                return Promise.reject(noDataError);
+            }
+        }
+
+}
+getJsonObject('name-pwd',{remember:false,name:"",pwd:""});
 </script>
 </body>
 </html>
